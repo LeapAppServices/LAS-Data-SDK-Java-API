@@ -29,7 +29,7 @@
   </developers>
 
   <scm>
-    <url>https://github.com/LeapAppServices/LAS-SDK-Data-Java-API/tree/master</url>
+    <url>https://github.com/LeapAppServices/LAS-SDK-Data-Java-API/tree/develop</url>
     <connection>scm:git:https://github.com/LeapAppServices/LAS-SDK-Data-Java-API.git</connection>
   </scm>
 
