@@ -615,7 +615,7 @@ public class LASQuery {
     }
 
     Map toMap() {
-      Map map = new HashMap<>();
+      Map map = new HashMap();
       Map query = new HashMap();
       query.put("className", className);
       query.put("where", elemMatcher.getElemMatherFiler());

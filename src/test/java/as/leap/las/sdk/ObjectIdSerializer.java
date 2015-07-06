@@ -38,7 +38,7 @@ public class ObjectIdSerializer extends JsonSerializer {
         } else if (value instanceof byte[]) {
             return new ObjectId((byte[]) value);
         } else if (value instanceof ObjectId) {
-            HashMap<Object, Object> map = new HashMap<>();
+            HashMap<Object, Object> map = new HashMap<Object, Object>();
             map.put("$oid", value.toString());
             return map;
         } else {

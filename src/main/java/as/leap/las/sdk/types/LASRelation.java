@@ -15,7 +15,7 @@ public class LASRelation implements Serializable {
 
   private final String __type = LASKeyType.RELATION.v();
   private String className;
-  private List<LASPointer> objects = new ArrayList<>();
+  private List<LASPointer> objects = new ArrayList<LASPointer>();
 
   public LASRelation() {
   }

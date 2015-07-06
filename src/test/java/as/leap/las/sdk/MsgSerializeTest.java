@@ -70,7 +70,7 @@ public class MsgSerializeTest {
 		lasQuery.addKey("bb");
 		lasQuery.setIncludes("cc");
 		lasQuery.sort(-1,"name","age");
-		Map<String, Object> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		if (lasQuery.query() != null) map.put("where", asJson(lasQuery.query()));
 		if (lasQuery.sort() != null) map.put("order", lasQuery.sort());
 		if (lasQuery.keys() != null) map.put("keys", lasQuery.keys());

@@ -16,7 +16,7 @@ public class LASUpdate {
   public enum Position {
     LAST, FIRST
   }
-  private Map<String, Object> modifierOps = new LinkedHashMap<>();
+  private Map<String, Object> modifierOps = new LinkedHashMap<String, Object>();
   public LASUpdate() {
 
   }
