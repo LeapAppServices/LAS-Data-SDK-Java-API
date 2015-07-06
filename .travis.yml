@@ -1,0 +1,13 @@
+language: java
+
+jdk:
+  - oraclejdk7
+
+branches:
+  only:
+  - master
+
+notifications:
+  email:
+  - yyang@ilegendsoft.com
+
