@@ -4,8 +4,8 @@ jdk:
   - oraclejdk7
 
 branches:
-  only:
   - master
+  - develop
 
 notifications:
   email:

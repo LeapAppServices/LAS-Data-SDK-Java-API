@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>as.leap</groupId>
-  <artifactId>LAS-sdk-data-java-api</artifactId>
+  <artifactId>sdk-data-api</artifactId>
   <version>3.0.1</version>
 
   <packaging>jar</packaging>
-  <name>LAS-Data-SDK-Java-API</name>
+  <name>sdk-data-api</name>
   <description>LAS-SDK-Data-Java-API is a lib for LAS sdk</description>
 
   <url>https://github.com/LeapAppServices/LAS-SDK-Data-Java-API</url>
