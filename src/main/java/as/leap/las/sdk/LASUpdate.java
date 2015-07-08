@@ -112,10 +112,13 @@ public class LASUpdate {
   }
 
   public LASUpdate addRelation(String relationKey, LASPointer... pointers) {
+    return addRelation(relationKey, Arrays.asList(pointers));
+  }
+
+  public LASUpdate addRelation(String relationKey, List<LASPointer> pointers) {
     Map relation = new HashMap();
     relation.put("__op", "AddRelation");
-    List<LASPointer> lasPointers = Arrays.asList(pointers);
-    relation.put("objects", lasPointers);
+    relation.put("objects", pointers);
     addMultiFieldOperation(relationKey, relation);
     return this;
   }
