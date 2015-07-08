@@ -102,11 +102,21 @@ public class LASUpdate {
     return this;
   }
 
+  public LASUpdate unsetMany(List<String> keys) {
+    for (String key : keys) {
+      unset(key);
+    }
+    return this;
+  }
+
   public LASUpdate removeRelation(String relationKey, LASPointer... pointers) {
+    return removeRelation(relationKey, Arrays.asList(pointers));
+  }
+
+  public LASUpdate removeRelation(String relationKey, List<LASPointer> pointers) {
     Map relation = new HashMap();
     relation.put("__op", "RemoveRelation");
-    List<LASPointer> lasPointers = Arrays.asList(pointers);
-    relation.put("objects", lasPointers);
+    relation.put("objects", pointers);
     addMultiFieldOperation(relationKey, relation);
     return this;
   }
@@ -132,9 +142,13 @@ public class LASUpdate {
    * @return
    */
   public <T> LASUpdate arrayAdd(String arrayKey, T... items) {
+    return arrayAdd(arrayKey, Arrays.asList(items));
+  }
+
+  public <T> LASUpdate arrayAdd(String arrayKey, List items) {
     Map addUnique = new HashMap();
     addUnique.put("__op", "Add");
-    addUnique.put("objects", Arrays.asList(items));
+    addUnique.put("objects", items);
     addMultiFieldOperation(arrayKey, addUnique);
     return this;
   }
@@ -148,9 +162,13 @@ public class LASUpdate {
    * @return
    */
   public <T> LASUpdate arrayAddUnique(String arrayKey, T... items) {
+    return arrayAddUnique(arrayKey, Arrays.asList(items));
+  }
+
+  public <T> LASUpdate arrayAddUnique(String arrayKey, List items) {
     Map addUnique = new HashMap();
     addUnique.put("__op", "AddUnique");
-    addUnique.put("objects", Arrays.asList(items));
+    addUnique.put("objects", items);
     addMultiFieldOperation(arrayKey, addUnique);
     return this;
   }
@@ -164,9 +182,13 @@ public class LASUpdate {
    * @return
    */
   public <T> LASUpdate arrayRemove(String arrayKey, T... items) {
+    return arrayRemove(arrayKey, Arrays.asList(items));
+  }
+
+  public <T> LASUpdate arrayRemove(String arrayKey, List items) {
     Map addUnique = new HashMap();
     addUnique.put("__op", "Remove");
-    addUnique.put("objects", Arrays.asList(items));
+    addUnique.put("objects", items);
     addMultiFieldOperation(arrayKey, addUnique);
     return this;
   }
