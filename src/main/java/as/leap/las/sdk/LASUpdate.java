@@ -25,31 +25,13 @@ public class LASUpdate {
     this.modifierOps = TypesUtils.toMap(map);
   }
 
-  /**
-   * Static factory method to create an  empty Update
-   *
-   * @return
-   */
   public static LASUpdate getUpdate() {
     return new LASUpdate();
   }
-
-  /**
-   * Static factory method to create an  empty Update
-   *
-   * @return
-   */
   public static LASUpdate getUpdate(Map map) {
     return new LASUpdate(map);
   }
 
-  /**
-   * Update using the {@literal $set} update modifier
-   *
-   * @param key
-   * @param value
-   * @return
-   */
   public LASUpdate set(String key, Object value) {
     addMultiFieldOperation(key, value);
     return this;
@@ -57,10 +39,10 @@ public class LASUpdate {
 
   /**
    * Update using the {@literal $set} update modifier
-   * <p/>
    * Just update a given field in sub documents
-   *
-   * @see <b>http://docs.mongodb.org/manual/reference/operator/update/set/</b>
+   * @param key The key
+   * @param value The value
+   * @return this
    */
   public LASUpdate setBright(String key, Object value) {
     if (value instanceof Map) {
@@ -82,12 +64,6 @@ public class LASUpdate {
     return this;
   }
 
-  /**
-   * Update using the {@literal $unset} update modifier
-   *
-   * @param key
-   * @return
-   */
   public LASUpdate unset(String key) {
     Map del = new HashMap();
     del.put("__op", "Delete");
@@ -133,14 +109,6 @@ public class LASUpdate {
     return this;
   }
 
-  /**
-   * For array
-   *
-   * @param arrayKey
-   * @param items
-   * @param <T>
-   * @return
-   */
   public <T> LASUpdate arrayAdd(String arrayKey, T... items) {
     return arrayAdd(arrayKey, Arrays.asList(items));
   }
@@ -153,14 +121,6 @@ public class LASUpdate {
     return this;
   }
 
-  /**
-   * For array
-   *
-   * @param arrayKey
-   * @param items
-   * @param <T>
-   * @return
-   */
   public <T> LASUpdate arrayAddUnique(String arrayKey, T... items) {
     return arrayAddUnique(arrayKey, Arrays.asList(items));
   }
@@ -173,14 +133,6 @@ public class LASUpdate {
     return this;
   }
 
-  /**
-   * For array
-   *
-   * @param arrayKey
-   * @param items
-   * @param <T>
-   * @return
-   */
   public <T> LASUpdate arrayRemove(String arrayKey, T... items) {
     return arrayRemove(arrayKey, Arrays.asList(items));
   }
@@ -193,14 +145,6 @@ public class LASUpdate {
     return this;
   }
 
-
-  /**
-   * Update using the {@literal $inc} update modifier
-   *
-   * @param key
-   * @param inc
-   * @return
-   */
   public LASUpdate inc(String key, Number inc) {
     Map $inc = new HashMap();
     $inc.put("__op", "Increment");
@@ -209,14 +153,6 @@ public class LASUpdate {
     return this;
   }
 
-  /**
-   * Update using the {@literal $addToSet} update modifier
-   *
-   * @param key
-   * @param value
-   * @return
-   * @see <b>http://docs.mongodb.org/manual/reference/operator/update/addToSet/</b>
-   */
   public LASUpdate addToSet(String key, Object value) {
     addMultiFieldOperation(key, value);
     return this;

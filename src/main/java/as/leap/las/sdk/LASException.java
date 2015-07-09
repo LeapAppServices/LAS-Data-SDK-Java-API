@@ -8,9 +8,9 @@ public class LASException extends RuntimeException {
   public int code;
 
   /**
-   * @param code
-   * @param msg   the detail message
-   * @param cause the root cause
+   * @param code  The code
+   * @param msg   The detail message
+   * @param cause The root cause
    */
   public LASException(int code, String msg, Throwable cause) {
     super(msg, cause);

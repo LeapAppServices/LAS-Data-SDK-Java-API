@@ -9,9 +9,7 @@ import java.util.*;
 /**
  * object query for Sun
  *
- * @author jing zhao
- * @date 4/11/14
- * @see
+ * @author sneaky
  * @since 1.0
  */
 public class LASQuery {
@@ -107,26 +105,10 @@ public class LASQuery {
     return this;
   }
 
-  /**
-   * @deprecated Instead of regex(String key, String regex)
-   */
   public LASQuery matches(String key, String regex) {
     throw new UnsupportedOperationException("Unsupported. Please use regex(String key, String regex)");
   }
 
-  /**
-   * Provides regular expression capabilities for pattern matching strings in queries. <br>
-   * LAS uses Perl compatible regular expressions (i.e. “PCRE” ) version 8.36 with UTF-8 support.<br>
-   *
-   * In LAS, you can also use regular expression objects (i.e. /pattern/) to specify regular<br>
-   * examples:
-   * /xxxx/i      i option perform a case-insensitive match
-   * /^xxxxx/i    ^ stared with x match
-   *
-   * @param key
-   * @param regex
-   * @return
-   */
   public LASQuery regex(String key, String regex) {
     addOperand(key, SunQueryType.REGULAR, regex);
     return this;
@@ -165,35 +147,35 @@ public class LASQuery {
   }
 
   /**
-   * @deprecated Instead of arrayAll
+   * @deprecated Instead of arrayAll.remove soon
+   *
+   * @param key The key
+   * @param values The values
+   * @param <T> T
+   * @return this
    */
-  public <T> LASQuery all(String key, T... value) {
-    arrayAll(key, value);
+  public <T> LASQuery all(String key, T... values) {
+    arrayAll(key, values);
     return this;
   }
 
   /**
    * Selects the documents where the value of a field is an array that contains all the specified elements
    *
-   * @param key
-   * @param value
-   * @return
+   * @param key The key
+   * @param values The values
+   * @param <T> T
+   * @return this
+   *
    */
-  public <T> LASQuery arrayAll(String key, T... value) {
-    if (value.length == 0) {
+  public <T> LASQuery arrayAll(String key, T... values) {
+    if (values.length == 0) {
       throw new IllegalArgumentException("value must be empty.");
     }
-    addOperand(key, SunQueryType.ALL, translator(value));
+    addOperand(key, SunQueryType.ALL, translator(values));
     return this;
   }
 
-  /**
-   * Selects the documents where the value of a field is an array that contains all the specified elements
-   *
-   * @param key
-   * @param values
-   * @return
-   */
   public <T> LASQuery arrayAll(String key, List<T> values) {
     if (values != null && values.size() == 0) {
       throw new IllegalArgumentException("value must be empty.");
@@ -205,9 +187,10 @@ public class LASQuery {
   /**
    * Equivalent of the $nearSphere operand
    *
-   * @param geoPoint
+   * @param key The key
+   * @param geoPoint The GeoPoint
    * @param maxDistance max spherical distance
-   * @return
+   * @return this
    */
   public LASQuery nearSpherePoint(String key, LASGeoPoint geoPoint, double maxDistance) {
     Map geoMap = new HashMap();
@@ -219,8 +202,8 @@ public class LASQuery {
 
   /**
    * Equivalent to a $within operand, based on a bounding polygon represented by an array of points
-   *
-   * @param points an array of Double[] defining the vertices of the search area
+   * @param key The key
+   * @param points An array of Double[] defining the vertices of the search area
    * @return this
    */
   public LASQuery withinPolygon(String key, List<LASGeoPoint> points) {
@@ -341,11 +324,11 @@ public class LASQuery {
   }
 
   /**
-   * @param direction
-   * @param keys
-   * @return
    * @see as.leap.las.sdk.LASQuery#SORT_ASC
    * @see as.leap.las.sdk.LASQuery#SORT_DESC
+   * @param direction direction of sort key
+   * @param keys Sort keys
+   * @return this
    */
   public LASQuery sort(int direction, String... keys) {
     if (sort == null) {
@@ -402,9 +385,8 @@ public class LASQuery {
 
   /**
    * eg : pointer.pointerParent,pointer2
-   *
-   * @param includes
-   * @return
+   * @param includes The includes
+   * @return this
    */
   public LASQuery setIncludes(String includes) {
     this.includes = includes;

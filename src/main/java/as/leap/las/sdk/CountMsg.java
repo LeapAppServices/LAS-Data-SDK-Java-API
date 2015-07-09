@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
 /**
- * desc this class
  *
- * @author jing zhao
- * @date 9/1/14
- * @see
+ * @author sneaky
  * @since 2.0
  */
 public class CountMsg implements Serializable {

@@ -22,8 +22,8 @@ public class LASPointer implements Serializable {
 
   /**
    * @deprecated  Instead of LASPointer(ObjectId objectId, String className)
-   * @param objectId
-   * @param className
+   * @param objectId The objectId
+   * @param className The className
    */
   public LASPointer(String objectId, String className) {
     this.objectId = new ObjectId(objectId);

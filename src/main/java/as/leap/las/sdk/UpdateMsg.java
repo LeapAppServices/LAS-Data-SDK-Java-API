@@ -10,11 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * desc this class
- *
- * @author jing zhao
- * @date 9/1/14
- * @see
+ * @author sneaky
  * @since 2.0
  */
 public class UpdateMsg implements Serializable {
