@@ -65,6 +65,11 @@ public class LASQuery {
     return new LASQuery(query);
   }
 
+  public LASQuery not(String key, SingleElemMatcher elemMatcher) {
+    addOperand(key, SunQueryType.NOT, elemMatcher.getElemMatherFiler());
+    return this;
+  }
+
   public <T> LASQuery equalTo(String key, T value) {
     addOperand(key, null, value);
     return this;
@@ -456,6 +461,8 @@ public class LASQuery {
 
     NIN("$nin", "similar sql not in"),
 
+    NOT("$not", ""),
+
     ALL("$all", ""),
 
     WITHIN("$geoWithin", "queries for a defined point, line or shape that exists entirely within another defined shape"),
@@ -732,5 +739,63 @@ public class LASQuery {
       return elemMatherFiler;
     }
   }
+
+  public static class SingleElemMatcher {
+    Map elemMatherFiler = new LinkedHashMap();
+
+    public static SingleElemMatcher instance() {
+      return new SingleElemMatcher();
+    }
+
+    public SingleElemMatcher $eq(Object filter) {
+      elemMatherFiler.put("$eq", filter);
+      return this;
+    }
+
+    public SingleElemMatcher $gt(Object filter) {
+      elemMatherFiler.put("$gt", filter);
+      return this;
+    }
+
+    public SingleElemMatcher $gte(Object filter) {
+      elemMatherFiler.put("$gte", filter);
+      return this;
+    }
+
+    public SingleElemMatcher $lt(Object filter) {
+      elemMatherFiler.put("$lt", filter);
+      return this;
+    }
+
+    public SingleElemMatcher $lte(Object filter) {
+      elemMatherFiler.put("$lte", filter);
+      return this;
+    }
+
+    public SingleElemMatcher $size(int size) {
+      elemMatherFiler.put("$size", size);
+      return this;
+    }
+
+    public SingleElemMatcher $ne(Object filter) {
+      elemMatherFiler.put("$ne", filter);
+      return this;
+    }
+
+    public SingleElemMatcher $in(Object... filters) {
+      elemMatherFiler.put("$in", filters);
+      return this;
+    }
+
+    public SingleElemMatcher $nin(Object... filters) {
+      elemMatherFiler.put("$nin", filters);
+      return this;
+    }
+
+    public Map getElemMatherFiler() {
+      return elemMatherFiler;
+    }
+  }
+
 }
 
