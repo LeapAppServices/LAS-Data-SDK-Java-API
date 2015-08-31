@@ -4,7 +4,7 @@
 
   <groupId>as.leap</groupId>
   <artifactId>sdk-data-api</artifactId>
-  <version>3.0.1</version>
+  <version>3.0.2-SNAPSHOT</version>
 
   <packaging>jar</packaging>
   <name>sdk-data-api</name>
@@ -37,7 +37,7 @@
   <scm>
     <url>https://github.com/LeapAppServices/LAS-SDK-Data-Java-API/tree/develop</url>
     <connection>scm:git:https://github.com/LeapAppServices/LAS-SDK-Data-Java-API.git</connection>
-    <tag>sdk-data-api-3.0.1</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <properties>
