@@ -49,101 +49,36 @@
 
   <profiles>
     <profile>
-      <id>dev</id>
+      <id>sso</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.5</version>
+            <executions>
+              <execution>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
       <distributionManagement>
-        <repository>
-          <id>releases</id>
-          <name>Internal Releases</name>
-          <url>http://${nexus.develop.host}/nexus/content/repositories/releases</url>
-        </repository>
         <snapshotRepository>
-          <id>snapshots</id>
-          <name>Internal Releases</name>
-          <url>http://${nexus.develop.host}/nexus/content/repositories/snapshots</url>
+          <id>oss</id>
+          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
-      </distributionManagement>
-      <properties>
-        <url.leap>http://apidev.zcloud.io/2.0</url.leap>
-        <log.level>DEBUG</log.level>
-      </properties>
-    </profile>
-    <profile>
-      <id>pro</id>
-      <distributionManagement>
         <repository>
-          <id>releases</id>
-          <name>Internal Releases</name>
-          <url>http://${nexus.production.host}/content/repositories/releases</url>
+          <id>oss</id>
+          <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
-        <snapshotRepository>
-          <id>snapshots</id>
-          <name>Internal Releases</name>
-          <url>http://${nexus.production.host}/content/repositories/snapshots</url>
-        </snapshotRepository>
       </distributionManagement>
-      <properties>
-        <url.leap>http://api.leap.as/2.0</url.leap>
-        <log.level>INFO</log.level>
-      </properties>
-    </profile>
-    <profile>
-      <id>local</id>
-      <properties>
-        <url.leap>http://10.10.10.193:8080</url.leap>
-        <log.level>DEBUG</log.level>
-      </properties>
-    </profile>
-    <profile>
-      <id>lascn</id>
-      <properties>
-        <url.leap>http://api.maxleap.cn/2.0</url.leap>
-        <log.level>INFO</log.level>
-      </properties>
-    </profile>
-    <profile>
-      <id>uat</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <properties>
-        <url.leap>http://apiuat.zcloud.io/2.0</url.leap>
-        <log.level>INFO</log.level>
-      </properties>
     </profile>
   </profiles>
-
-  <!--<profiles>-->
-    <!--<profile>-->
-      <!--<id>sso</id>-->
-      <!--<build>-->
-        <!--<plugins>-->
-          <!--<plugin>-->
-            <!--<groupId>org.apache.maven.plugins</groupId>-->
-            <!--<artifactId>maven-gpg-plugin</artifactId>-->
-            <!--<version>1.5</version>-->
-            <!--<executions>-->
-              <!--<execution>-->
-                <!--<phase>verify</phase>-->
-                <!--<goals>-->
-                  <!--<goal>sign</goal>-->
-                <!--</goals>-->
-              <!--</execution>-->
-            <!--</executions>-->
-          <!--</plugin>-->
-        <!--</plugins>-->
-      <!--</build>-->
-      <!--<distributionManagement>-->
-        <!--<snapshotRepository>-->
-          <!--<id>oss</id>-->
-          <!--<url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
-        <!--</snapshotRepository>-->
-        <!--<repository>-->
-          <!--<id>oss</id>-->
-          <!--<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
-        <!--</repository>-->
-      <!--</distributionManagement>-->
-    <!--</profile>-->
-  <!--</profiles>-->
 
   <dependencies>
     <dependency>
