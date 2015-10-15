@@ -12,15 +12,15 @@ import java.util.Map;
  * Date: 14-5-19
  * Time: 10:07
  */
-public class LASDate {
+public class MLDate {
 
-  private static final String __type = LASKeyType.DATE.v();
+  private static final String __type = MLKeyType.DATE.v();
   private String iso;
 
-  public LASDate() {
+  public MLDate() {
   }
 
-  public LASDate(Date date) {
+  public MLDate(Date date) {
     this.iso = DateUtils.encodeDate(date);
   }
 
@@ -36,8 +36,8 @@ public class LASDate {
     this.iso = iso;
   }
 
-  public LASDate from(Date date) throws ParseException {
-    LASDate zCloudDate = new LASDate();
+  public MLDate from(Date date) throws ParseException {
+    MLDate zCloudDate = new MLDate();
     zCloudDate.setIso(DateUtils.encodeDate(date));
     return zCloudDate;
   }

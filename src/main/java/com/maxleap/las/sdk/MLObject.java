@@ -12,7 +12,7 @@ import java.util.Map;
  * Date: 14-10-8
  * Time: 13:54
  */
-public class LASObject implements Serializable {
+public class MLObject implements Serializable {
 
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private ObjectId objectId;
@@ -90,7 +90,7 @@ public class LASObject implements Serializable {
 
   @Override
   public String toString() {
-    return "LASObject{" +
+    return "MLObject{" +
       "objectId=" + objectId +
       ", createdAt=" + createdAt +
       ", updatedAt=" + updatedAt +

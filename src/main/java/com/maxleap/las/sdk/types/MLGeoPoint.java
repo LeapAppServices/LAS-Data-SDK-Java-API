@@ -8,16 +8,16 @@ import java.util.Map;
  * Date: 14-5-19
  * Time: 9:21
  */
-public class LASGeoPoint {
+public class MLGeoPoint {
 
-  private final String __type = LASKeyType.GEOPOINT.v();
+  private final String __type = MLKeyType.GEOPOINT.v();
   private double latitude = 0.0D;
   private double longitude = 0.0D;
 
   private static double EARTH_MEAN_RADIUS_KM = 6371.0D;
   private static double EARTH_MEAN_RADIUS_MILE = 3958.8000000000002D;
 
-  public LASGeoPoint(double latitude, double longitude) {
+  public MLGeoPoint(double latitude, double longitude) {
     setLatitude(latitude);
     setLongitude(longitude);
   }
@@ -46,7 +46,7 @@ public class LASGeoPoint {
     return this.longitude;
   }
 
-  public double distanceInRadiansTo(LASGeoPoint point) {
+  public double distanceInRadiansTo(MLGeoPoint point) {
     double d2r = 0.0174532925199433D;
     double lat1rad = this.latitude * d2r;
     double long1rad = this.longitude * d2r;
@@ -64,11 +64,11 @@ public class LASGeoPoint {
     return 2.0D * Math.asin(Math.sqrt(a));
   }
 
-  public double distanceInKilometersTo(LASGeoPoint point) {
+  public double distanceInKilometersTo(MLGeoPoint point) {
     return distanceInRadiansTo(point) * EARTH_MEAN_RADIUS_KM;
   }
 
-  public double distanceInMilesTo(LASGeoPoint point) {
+  public double distanceInMilesTo(MLGeoPoint point) {
     return distanceInRadiansTo(point) * EARTH_MEAN_RADIUS_MILE;
   }
 

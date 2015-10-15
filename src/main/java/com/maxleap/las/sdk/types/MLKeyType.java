@@ -5,7 +5,7 @@ package com.maxleap.las.sdk.types;
  * Date: 14-5-6
  * Time: 16:21
  */
-public enum LASKeyType {
+public enum MLKeyType {
 
     STRING("String"),
 
@@ -34,7 +34,7 @@ public enum LASKeyType {
     public static final String KEY_OBJECT_TYPE = "__type";
     private String v;
 
-    LASKeyType(String type) {
+    MLKeyType(String type) {
         this.v = type;
     }
 

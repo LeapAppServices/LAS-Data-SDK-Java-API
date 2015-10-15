@@ -7,7 +7,7 @@ package com.maxleap.las.sdk;
  */
 public class DateMapper {
 
-//  public static void mapperToDate(LASObject zCloudObject) {
+//  public static void mapperToDate(MLObject zCloudObject) {
 //    if (zCloudObject == null) return;
 //    Set<String> keySet = zCloudObject.getMap().keySet();
 //    for (String key : keySet) {
@@ -28,8 +28,8 @@ public class DateMapper {
 //
 //      Object val = zCloudObject.get(key);
 //      if (val != null) {
-//        if (val instanceof LASObject) {
-//          mapperToDate((LASObject) val);
+//        if (val instanceof MLObject) {
+//          mapperToDate((MLObject) val);
 //        } else if (val instanceof List) {
 //          mapperToDate((List) val);
 //        }
@@ -42,8 +42,8 @@ public class DateMapper {
 //    ArrayList arrayList = new ArrayList(list);
 //    for (int i = 0; i < arrayList.size(); i++) {
 //      Object val = list.get(i);
-//      if (val instanceof LASObject) {
-//        mapperToDate((LASObject) val);
+//      if (val instanceof MLObject) {
+//        mapperToDate((MLObject) val);
 //      } else if (val instanceof List) {
 //        mapperToDate((List) val);
 //      }

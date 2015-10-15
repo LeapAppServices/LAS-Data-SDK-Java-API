@@ -4,7 +4,7 @@ package com.maxleap.las.sdk;
  * @author sneaky
  * @since 3.0.0
  */
-public class LASException extends RuntimeException {
+public class MLException extends RuntimeException {
   public int code;
 
   /**
@@ -12,12 +12,12 @@ public class LASException extends RuntimeException {
    * @param msg   The detail message
    * @param cause The root cause
    */
-  public LASException(int code, String msg, Throwable cause) {
+  public MLException(int code, String msg, Throwable cause) {
     super(msg, cause);
     this.code = code;
   }
 
-  public LASException(int theCode, String theMessage) {
+  public MLException(int theCode, String theMessage) {
     super(theMessage);
     this.code = theCode;
   }

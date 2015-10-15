@@ -11,26 +11,26 @@ import java.util.Map;
  * Date: 14-5-19
  * Time: 9:21
  */
-public class LASPointer implements Serializable {
+public class MLPointer implements Serializable {
 
-  private final String __type = LASKeyType.POINTER.v();
+  private final String __type = MLKeyType.POINTER.v();
   private String className;
   private ObjectId objectId;
 
-  public LASPointer() {
+  public MLPointer() {
   }
 
   /**
-   * @deprecated  Instead of LASPointer(ObjectId objectId, String className)
+   * @deprecated  Instead of MLPointer(ObjectId objectId, String className)
    * @param objectId The objectId
    * @param className The className
    */
-  public LASPointer(String objectId, String className) {
+  public MLPointer(String objectId, String className) {
     this.objectId = new ObjectId(objectId);
     this.className = className;
   }
 
-  public LASPointer(ObjectId objectId, String className) {
+  public MLPointer(ObjectId objectId, String className) {
     this.objectId = objectId;
     this.className = className;
   }
@@ -65,7 +65,7 @@ public class LASPointer implements Serializable {
 
   @Override
   public boolean equals(Object obj) {
-    LASPointer o = (LASPointer) obj;
+    MLPointer o = (MLPointer) obj;
     return ((o.getClassName() == null && className == null) || o.getClassName().equals(className))
         && ((o.getObjectId() == null && objectId == null) || o.getObjectId().equals(objectId));
   }

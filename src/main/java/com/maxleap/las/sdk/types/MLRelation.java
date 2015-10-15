@@ -11,16 +11,16 @@ import java.util.Map;
  * Date: 14-5-19
  * Time: 9:21
  */
-public class LASRelation implements Serializable {
+public class MLRelation implements Serializable {
 
-  private final String __type = LASKeyType.RELATION.v();
+  private final String __type = MLKeyType.RELATION.v();
   private String className;
-  private List<LASPointer> objects = new ArrayList<LASPointer>();
+  private List<MLPointer> objects = new ArrayList<MLPointer>();
 
-  public LASRelation() {
+  public MLRelation() {
   }
 
-  public LASRelation(String className) {
+  public MLRelation(String className) {
     this.className = className;
   }
 
@@ -44,11 +44,11 @@ public class LASRelation implements Serializable {
     this.objects = objects;
   }
 
-  public void addObject(LASPointer pointer) {
+  public void addObject(MLPointer pointer) {
     this.objects.add(pointer);
   }
 
-  public void removeObject(LASPointer pointer) {
+  public void removeObject(MLPointer pointer) {
     this.objects.remove(pointer);
   }
 

@@ -8,15 +8,15 @@ import java.util.Map;
  * Date: 14-5-19
  * Time: 13:41
  */
-public class LASBytes {
+public class MLBytes {
 
-  private static final String __type = LASKeyType.BYTES.v();
+  private static final String __type = MLKeyType.BYTES.v();
   private String base64;
 
-  public LASBytes() {
+  public MLBytes() {
   }
 
-  public LASBytes(String base64) {
+  public MLBytes(String base64) {
     this.base64 = base64;
   }
 

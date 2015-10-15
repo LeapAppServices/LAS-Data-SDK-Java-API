@@ -4,13 +4,13 @@
 
   <groupId>com.maxleap</groupId>
   <artifactId>sdk-data-api</artifactId>
-  <version>3.1.0-SNAPSHOT</version>
+  <version>3.2.0-SNAPSHOT</version>
 
   <packaging>jar</packaging>
   <name>sdk-data-api</name>
-  <description>LAS-SDK-Data-Java-API is a lib for LAS sdk</description>
+  <description>SDK-Data-Java-API is a lib for MaxLeap sdk</description>
 
-  <url>https://github.com/LeapAppServices/LAS-SDK-Data-Java-API</url>
+  <url>https://github.com/MaxLeap/SDK-Data-Java-API</url>
   <inceptionYear>2015</inceptionYear>
 
   <developers>
@@ -35,16 +35,14 @@
   </licenses>
 
   <scm>
-    <url>https://github.com/LeapAppServices/LAS-SDK-Data-Java-API/tree/develop</url>
-    <connection>scm:git:https://github.com/LeapAppServices/LAS-SDK-Data-Java-API.git</connection>
+    <url>https://github.com/MaxLeap/SDK-Data-Java-API/tree/develop</url>
+    <connection>scm:git:https://github.com/MaxLeap/SDK-Data-Java-API.git</connection>
     <tag>HEAD</tag>
   </scm>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jackson.version>2.5.3</jackson.version>
-    <nexus.develop.host>10.10.10.137:8081</nexus.develop.host>
-    <nexus.production.host>54.164.163.132:8081</nexus.production.host>
   </properties>
 
   <profiles>

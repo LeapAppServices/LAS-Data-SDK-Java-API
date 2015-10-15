@@ -59,7 +59,7 @@ public class UpdateMsg implements Serializable {
 
   /**
    * @return result of Incs
-   * @see LASUpdate#inc(String, Number)
+   * @see MLUpdate#inc(String, Number)
    */
   @JsonAnyGetter
   public Map result() {

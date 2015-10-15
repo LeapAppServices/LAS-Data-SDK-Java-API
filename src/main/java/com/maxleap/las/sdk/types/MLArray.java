@@ -7,5 +7,5 @@ import java.util.ArrayList;
  * Date: 14-5-19
  * Time: 12:04
  */
-public class LASArray extends ArrayList {
+public class MLArray extends ArrayList {
 }

@@ -1,7 +1,7 @@
 package com.maxleap.las.sdk;
 
-import com.maxleap.las.sdk.types.LASGeoPoint;
-import com.maxleap.las.sdk.types.LASPointer;
+import com.maxleap.las.sdk.types.MLGeoPoint;
+import com.maxleap.las.sdk.types.MLPointer;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -15,7 +15,7 @@ import java.io.IOException;
  * @author sneaky
  * @since 3.0.0
  */
-public class LASQueryTest {
+public class MLQueryTest {
 
   private static final ObjectMapper mapper = new ObjectMapper();
   private static final ObjectMapper objectIgnoreNullMapper;
@@ -54,8 +54,8 @@ public class LASQueryTest {
     String className = "Test0011";
     ObjectId objectId = new ObjectId();
 
-    LASQuery query = LASQuery.instance();
-    LASPointer pointer = new LASPointer(objectId, className);
+    MLQuery query = MLQuery.instance();
+    MLPointer pointer = new MLPointer(objectId, className);
     query.relatedTo("relation", pointer);
     String queryString = asJson(query.query());
     String s = "{\"$relatedTo\":{\"object\":{\"__type\":\"Pointer\",\"className\":\"" + className + "\",\"objectId\":\"" + objectId + "\"},\"key\":\"relation\"}}";
@@ -70,23 +70,23 @@ public class LASQueryTest {
 
     System.out.println(asJson(query.query()));
 
-    LASQuery query1 = new LASQuery();
-    LASGeoPoint geoPoint = new LASGeoPoint(31.11339, 121.10013);
-    LASQuery query2 = query1.nearSpherePoint("geoPoint", geoPoint, 500);
+    MLQuery query1 = new MLQuery();
+    MLGeoPoint geoPoint = new MLGeoPoint(31.11339, 121.10013);
+    MLQuery query2 = query1.nearSpherePoint("geoPoint", geoPoint, 500);
     System.out.println(asJson(query2.query()));
     String nearSphere = "\"geoPoint\": {\"$nearSphere\":{\"__type\": \"GeoPoint\", \"latitude\": 31.11339, \"longitude\": 121.10013},\"$maxDistance\": 500}";
     System.out.println(nearSphere);
 
-    LASQuery query3 = new LASQuery();
-    LASQuery.SelectOperator selectOperator = new LASQuery.SelectOperator(className, "city");
+    MLQuery query3 = new MLQuery();
+    MLQuery.SelectOperator selectOperator = new MLQuery.SelectOperator(className, "city");
     selectOperator.$gt("winPct", 0.5);
     query3.notSelect("hometown", selectOperator);
     System.out.println(asJson(query3.query()));
     String select = "\"hometown\":{\"$dontSelect\":{\"query\":{\"className\":\"" + className + "\",\"where\":{\"winPct\":{\"$gt\":0.5}}},\"key\":\"city\"}}";
     System.out.println(select);
 
-    LASQuery query4 = new LASQuery();
-    LASQuery.InQueryOperator queryOperator = new LASQuery.InQueryOperator(className);
+    MLQuery query4 = new MLQuery();
+    MLQuery.InQueryOperator queryOperator = new MLQuery.InQueryOperator(className);
     queryOperator.$exists("image", false);
     query4.inQuery("pointer", queryOperator);
 
@@ -94,9 +94,9 @@ public class LASQueryTest {
     String inQuery = "\"pointer\":{\"$inQuery\":{\"where\":{\"image\":{\"$exists\": false}},\"className\":\"" + className + "\"}}}";
     System.out.println(inQuery);
 
-    LASQuery query5 = LASQuery.instance();
-    query5.sort(LASQuery.SORT_ASC, "createdAt", "updatedAt");
-    query5.sort(LASQuery.SORT_DESC, "test");
+    MLQuery query5 = MLQuery.instance();
+    query5.sort(MLQuery.SORT_ASC, "createdAt", "updatedAt");
+    query5.sort(MLQuery.SORT_DESC, "test");
     System.out.println(query5.sort());
 
     System.out.println(0.0083 * (3 / 256F));

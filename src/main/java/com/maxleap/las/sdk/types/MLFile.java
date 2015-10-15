@@ -8,18 +8,18 @@ import java.util.Map;
  * Date: 14-5-19
  * Time: 10:20
  */
-public class LASFile {
+public class MLFile {
 
-  private static String __type = LASKeyType.FILE.v();
+  private static String __type = MLKeyType.FILE.v();
   private String name;
   private String url;
 
-  public LASFile(String url, String name) {
+  public MLFile(String url, String name) {
     this.url = url;
     this.name = name;
   }
 
-  public LASFile() {
+  public MLFile() {
 
   }
 
@@ -28,7 +28,7 @@ public class LASFile {
   }
 
   public void set__type(String __type) {
-    LASFile.__type = __type;
+    MLFile.__type = __type;
   }
 
   public String getName() {

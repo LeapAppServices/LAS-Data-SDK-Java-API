@@ -1,7 +1,7 @@
 package com.maxleap.las.sdk;
 
-import com.maxleap.las.sdk.types.LASGeoPoint;
-import com.maxleap.las.sdk.types.LASPointer;
+import com.maxleap.las.sdk.types.MLGeoPoint;
+import com.maxleap.las.sdk.types.MLPointer;
 import com.maxleap.las.sdk.types.TypesUtils;
 
 import java.util.*;
@@ -12,7 +12,7 @@ import java.util.*;
  * @author sneaky
  * @since 1.0
  */
-public class LASQuery {
+public class MLQuery {
 
   /**
    * @see <b>http://docs.mongodb.org/manual/reference/operator/meta/hint/</b>
@@ -45,81 +45,81 @@ public class LASQuery {
   private List<String> keys;
   private boolean keysFlag;
 
-  public LASQuery() {
+  public MLQuery() {
   }
 
-  public LASQuery(Map query) {
+  public MLQuery(Map query) {
     this.queryDBObject = TypesUtils.toMap(query);
   }
 
-  public LASQuery(Map query, List keys) {
+  public MLQuery(Map query, List keys) {
     this.queryDBObject = TypesUtils.toMap(query);
     this.keys = keys;
   }
 
-  public static LASQuery instance() {
-    return new LASQuery();
+  public static MLQuery instance() {
+    return new MLQuery();
   }
 
-  public static LASQuery instance(Map query) {
-    return new LASQuery(query);
+  public static MLQuery instance(Map query) {
+    return new MLQuery(query);
   }
 
-  public LASQuery not(String key, SingleElemMatcher elemMatcher) {
+  public MLQuery not(String key, SingleElemMatcher elemMatcher) {
     addOperand(key, SunQueryType.NOT, elemMatcher.getElemMatherFiler());
     return this;
   }
 
-  public <T> LASQuery equalTo(String key, T value) {
+  public <T> MLQuery equalTo(String key, T value) {
     addOperand(key, null, value);
     return this;
   }
 
-  public <T> LASQuery notEqualTo(String key, T value) {
+  public <T> MLQuery notEqualTo(String key, T value) {
     addOperand(key, SunQueryType.NE, value);
     return this;
   }
 
-  public LASQuery exists(String key) {
+  public MLQuery exists(String key) {
     addOperand(key, SunQueryType.EXIST, true);
     return this;
   }
 
-  public LASQuery notExist(String key) {
+  public MLQuery notExist(String key) {
     addOperand(key, SunQueryType.EXIST, false);
     return this;
   }
 
-  public <T> LASQuery greaterThan(String key, T value) {
+  public <T> MLQuery greaterThan(String key, T value) {
     addOperand(key, SunQueryType.GT, value);
     return this;
   }
 
-  public <T> LASQuery greaterThanOrEqualTo(String key, T value) {
+  public <T> MLQuery greaterThanOrEqualTo(String key, T value) {
     addOperand(key, SunQueryType.GTE, value);
     return this;
   }
 
-  public <T> LASQuery lessThan(String key, T value) {
+  public <T> MLQuery lessThan(String key, T value) {
     addOperand(key, SunQueryType.LT, value);
     return this;
   }
 
-  public <T> LASQuery lessThanOrEqualTo(String key, T value) {
+  public <T> MLQuery lessThanOrEqualTo(String key, T value) {
     addOperand(key, SunQueryType.LTE, value);
     return this;
   }
 
-  public LASQuery matches(String key, String regex) {
+  public MLQuery matches(String key, String regex) {
     throw new UnsupportedOperationException("Unsupported. Please use regex(String key, String regex)");
   }
 
-  public LASQuery regex(String key, String regex) {
+  public MLQuery regex(String key, String regex) {
     addOperand(key, SunQueryType.REGULAR, regex);
     return this;
   }
 
-  public <T> LASQuery in(String key, T... value) {
+  public <T> MLQuery in(String key, T... value) {
     if (value.length == 0) {
       throw new IllegalArgumentException("value must be empty.");
     }
@@ -127,7 +127,7 @@ public class LASQuery {
     return this;
   }
 
-  public <T> LASQuery in(String key, List<T> values) {
+  public <T> MLQuery in(String key, List<T> values) {
     if (values != null && values.size() == 0) {
       throw new IllegalArgumentException("value must be empty.");
     }
@@ -135,7 +135,7 @@ public class LASQuery {
     return this;
   }
 
-  public <T> LASQuery notIn(String key, T... value) {
+  public <T> MLQuery notIn(String key, T... value) {
     if (value.length == 0) {
       throw new IllegalArgumentException("value must be empty.");
     }
@@ -143,7 +143,7 @@ public class LASQuery {
     return this;
   }
 
-  public <T> LASQuery notIn(String key, List<T> values) {
+  public <T> MLQuery notIn(String key, List<T> values) {
     if (values != null && values.size() == 0) {
       throw new IllegalArgumentException("value must be empty.");
     }
@@ -159,7 +159,7 @@ public class LASQuery {
    * @param <T> T
    * @return this
    */
-  public <T> LASQuery all(String key, T... values) {
+  public <T> MLQuery all(String key, T... values) {
     arrayAll(key, values);
     return this;
   }
@@ -173,7 +173,7 @@ public class LASQuery {
    * @return this
    *
    */
-  public <T> LASQuery arrayAll(String key, T... values) {
+  public <T> MLQuery arrayAll(String key, T... values) {
     if (values.length == 0) {
       throw new IllegalArgumentException("value must be empty.");
     }
@@ -181,7 +181,7 @@ public class LASQuery {
     return this;
   }
 
-  public <T> LASQuery arrayAll(String key, List<T> values) {
+  public <T> MLQuery arrayAll(String key, List<T> values) {
     if (values != null && values.size() == 0) {
       throw new IllegalArgumentException("value must be empty.");
     }
@@ -197,7 +197,7 @@ public class LASQuery {
    * @param maxDistance max spherical distance
    * @return this
    */
-  public LASQuery nearSpherePoint(String key, LASGeoPoint geoPoint, double maxDistance) {
+  public MLQuery nearSpherePoint(String key, MLGeoPoint geoPoint, double maxDistance) {
     Map geoMap = new HashMap();
     geoMap.put("$nearSphere", geoPoint.toMap());
     geoMap.put("$maxDistance", maxDistance);
@@ -211,35 +211,35 @@ public class LASQuery {
    * @param points An array of Double[] defining the vertices of the search area
    * @return this
    */
-  public LASQuery withinPolygon(String key, List<LASGeoPoint> points) {
+  public MLQuery withinPolygon(String key, List<MLGeoPoint> points) {
     throw new UnsupportedOperationException("");
   }
 
-  public <T> LASQuery inQuery(String key, InQueryOperator queryOperator) {
+  public <T> MLQuery inQuery(String key, InQueryOperator queryOperator) {
     addOperand(key, SunQueryType.INQUERY, queryOperator.toMap());
     return this;
   }
 
-  public <T> LASQuery notInQuery(String key, InQueryOperator queryOperator) {
+  public <T> MLQuery notInQuery(String key, InQueryOperator queryOperator) {
     addOperand(key, SunQueryType.NINQUERY, queryOperator);
     return this;
   }
 
-  public <T> LASQuery select(String key, SelectOperator selectOperator) {
+  public <T> MLQuery select(String key, SelectOperator selectOperator) {
     addOperand(key, SunQueryType.SELECT, selectOperator.toMap());
     return this;
   }
 
-  public <T> LASQuery notSelect(String key, SelectOperator selectOperator) {
+  public <T> MLQuery notSelect(String key, SelectOperator selectOperator) {
     addOperand(key, SunQueryType.DONTSELECT, selectOperator.toMap());
     return this;
   }
 
-  public LASQuery or(LASQuery... queries) {
+  public MLQuery or(MLQuery... queries) {
     Map $or = new HashMap();
     List list = new ArrayList();
     list.add(this.query());
-    for (LASQuery query : queries) {
+    for (MLQuery query : queries) {
       if (query == null) continue;
       list.add(query.query());
     }
@@ -249,11 +249,11 @@ public class LASQuery {
     return this;
   }
 
-  public LASQuery and(LASQuery... queries) {
+  public MLQuery and(MLQuery... queries) {
     Map $and = new HashMap();
     List list = new ArrayList();
     list.add(this.query());
-    for (LASQuery query : queries) {
+    for (MLQuery query : queries) {
       if (query == null) continue;
       list.add(query.query());
     }
@@ -263,7 +263,7 @@ public class LASQuery {
     return this;
   }
 
-  public LASQuery addKey(String key) {
+  public MLQuery addKey(String key) {
     if (keys == null) {
       keys = new ArrayList();
       keysFlag = true;
@@ -275,7 +275,7 @@ public class LASQuery {
     return this;
   }
 
-  public LASQuery addKeys(List keys) {
+  public MLQuery addKeys(List keys) {
     if (this.keys == null) {
       this.keys = new ArrayList();
       keysFlag = true;
@@ -288,11 +288,11 @@ public class LASQuery {
   }
 
 
-  public LASQuery excludeKey(String key) {
+  public MLQuery excludeKey(String key) {
     throw new UnsupportedOperationException("UnsupportedOperation.");
   }
 
-  public LASQuery excludeKeys(String[] keys) {
+  public MLQuery excludeKeys(String[] keys) {
     throw new UnsupportedOperationException("UnsupportedOperation.");
   }
 
@@ -316,7 +316,7 @@ public class LASQuery {
     return null;
   }
 
-  public LASQuery setSort(Map<String, Integer> sort) {
+  public MLQuery setSort(Map<String, Integer> sort) {
     if (this.sort == null) {
       this.sort = new LinkedHashMap();
     }
@@ -329,13 +329,13 @@ public class LASQuery {
   }
 
   /**
-   * @see LASQuery#SORT_ASC
-   * @see LASQuery#SORT_DESC
+   * @see MLQuery#SORT_ASC
+   * @see MLQuery#SORT_DESC
    * @param direction direction of sort key
    * @param keys Sort keys
    * @return this
    */
-  public LASQuery sort(int direction, String... keys) {
+  public MLQuery sort(int direction, String... keys) {
     if (sort == null) {
       sort = new LinkedHashMap();
     }
@@ -346,7 +346,7 @@ public class LASQuery {
     return this;
   }
 
-  public LASQuery relatedTo(String key, LASPointer pointer) {
+  public MLQuery relatedTo(String key, MLPointer pointer) {
     Map $relatedTo = new HashMap();
     $relatedTo.put("object", pointer.toMap());
     $relatedTo.put("key", key);
@@ -379,7 +379,7 @@ public class LASQuery {
     return skip;
   }
 
-  public LASQuery setSkip(int skip) {
+  public MLQuery setSkip(int skip) {
     this.skip = skip;
     return this;
   }
@@ -393,7 +393,7 @@ public class LASQuery {
    * @param includes The includes
    * @return this
    */
-  public LASQuery setIncludes(String includes) {
+  public MLQuery setIncludes(String includes) {
     this.includes = includes;
     return this;
   }
@@ -402,7 +402,7 @@ public class LASQuery {
     return includes;
   }
 
-  public LASQuery setLimit(int limit) {
+  public MLQuery setLimit(int limit) {
     this.limit = limit;
     return this;
   }
@@ -411,7 +411,7 @@ public class LASQuery {
     return queryDBObject;
   }
 
-  public LASQuery from(Map map) {
+  public MLQuery from(Map map) {
     queryDBObject.putAll(map);
     return this;
   }

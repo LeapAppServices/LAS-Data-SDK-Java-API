@@ -19,18 +19,18 @@ public class TypesUtils {
       return obj;
     } else if (obj instanceof ObjectId) {
       return ((ObjectId) obj).toHexString();
-    } else if (obj instanceof LASBytes) {
-      return ((LASBytes) obj).toMap();
-    } else if (obj instanceof LASDate) {
-      return ((LASDate) obj).toMap();
-    } else if (obj instanceof LASFile) {
-      return ((LASFile) obj).toMap();
-    } else if (obj instanceof LASGeoPoint) {
-      return ((LASGeoPoint) obj).toMap();
-    } else if (obj instanceof LASPointer) {
-      return ((LASPointer) obj).toMap();
-    } else if (obj instanceof LASRelation) {
-      return ((LASRelation) obj).toMap();
+    } else if (obj instanceof MLBytes) {
+      return ((MLBytes) obj).toMap();
+    } else if (obj instanceof MLDate) {
+      return ((MLDate) obj).toMap();
+    } else if (obj instanceof MLFile) {
+      return ((MLFile) obj).toMap();
+    } else if (obj instanceof MLGeoPoint) {
+      return ((MLGeoPoint) obj).toMap();
+    } else if (obj instanceof MLPointer) {
+      return ((MLPointer) obj).toMap();
+    } else if (obj instanceof MLRelation) {
+      return ((MLRelation) obj).toMap();
     } else if (obj instanceof Map) {
       toMap((Map) obj);
     } else if (obj instanceof List) {

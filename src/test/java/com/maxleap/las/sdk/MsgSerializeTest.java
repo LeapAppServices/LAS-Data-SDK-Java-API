@@ -60,11 +60,11 @@ public class MsgSerializeTest {
 		Assert.assertEquals(response4, asJson(findMsg));
 
 		String response5 = "{\"objectId\":\"556d25e22d342904801141de\",\"createdAt\":\"2015-06-02T03:41:22.911Z\",\"updatedAt\":\"2015-06-02T03:41:22.923Z\",\"ACL\":{\"556d25e22d342904801141de\":{\"read\":true,\"write\":true}}}";
-		LASObject lasObject = asObject(response5, LASObject.class);
+		MLObject lasObject = asObject(response5, MLObject.class);
 		System.out.println(lasObject);
 		Assert.assertEquals(response5, asJson(lasObject));
 
-		LASQuery lasQuery = LASQuery.instance();
+		MLQuery lasQuery = MLQuery.instance();
 		lasQuery.equalTo("name","jack");
 		lasQuery.addKey("aa");
 		lasQuery.addKey("bb");
