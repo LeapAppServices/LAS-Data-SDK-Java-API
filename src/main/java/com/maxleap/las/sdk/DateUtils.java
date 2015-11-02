@@ -24,10 +24,10 @@ public class DateUtils {
     return dateFormat.format(date);
   }
 
-  public static Date parseDate(String dateString) {
+  public synchronized static Date parseDate(String dateString) {
     try {
       return dateFormat.parse(dateString);
-    } catch (ParseException e) {
+    } catch (Exception e) {
       return null;
     }
   }
