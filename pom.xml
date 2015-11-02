@@ -4,7 +4,7 @@
 
   <groupId>com.maxleap</groupId>
   <artifactId>sdk-data-api</artifactId>
-  <version>3.2.1-SNAPSHOT</version>
+  <version>3.2.1</version>
 
   <packaging>jar</packaging>
   <name>sdk-data-api</name>
@@ -37,7 +37,7 @@
   <scm>
     <url>https://github.com/MaxLeap/SDK-Data-Java-API/tree/develop</url>
     <connection>scm:git:https://github.com/MaxLeap/SDK-Data-Java-API.git</connection>
-    <tag>HEAD</tag>
+    <tag>sdk-data-api-3.2.1</tag>
   </scm>
 
   <properties>
