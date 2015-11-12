@@ -416,6 +416,14 @@ public class MLQuery {
     return this;
   }
 
+  private <T> List translator(List<T> value){
+    ArrayList ts = new ArrayList();
+    for (T t : value) {
+      ts.add(TypesUtils.toMap(t));
+    }
+    return ts;
+  }
+
   private <T> List translator(T... value) {
     ArrayList ts = new ArrayList();
     for (T t : value) {
