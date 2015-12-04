@@ -153,11 +153,6 @@ public class MLUpdate {
     return this;
   }
 
-  public MLUpdate addToSet(String key, Object value) {
-    addMultiFieldOperation(key, value);
-    return this;
-  }
-
   public Map update() {
     return modifierOps;
   }

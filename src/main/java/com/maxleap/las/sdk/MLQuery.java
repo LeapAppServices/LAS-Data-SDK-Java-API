@@ -110,12 +110,13 @@ public class MLQuery {
     return this;
   }
 
-  public MLQuery matches(String key, String regex) {
-    throw new UnsupportedOperationException("Unsupported. Please use regex(String key, String regex)");
-  }
-
   public MLQuery regex(String key, String regex) {
     addOperand(key, SunQueryType.REGULAR, regex);
+    return this;
+  }
+
+  public MLQuery arraySize(String key, int size) {
+    addOperand(key, SunQueryType.SIZE, size);
     return this;
   }
 
@@ -472,6 +473,8 @@ public class MLQuery {
     NOT("$not", ""),
 
     ALL("$all", ""),
+
+    SIZE("$size",""),
 
     WITHIN("$geoWithin", "queries for a defined point, line or shape that exists entirely within another defined shape"),
 
