@@ -4,7 +4,7 @@
 
   <groupId>com.maxleap</groupId>
   <artifactId>sdk-data-api</artifactId>
-  <version>3.2.3</version>
+  <version>3.2.4-SNAPSHOT</version>
 
   <packaging>jar</packaging>
   <name>sdk-data-api</name>
